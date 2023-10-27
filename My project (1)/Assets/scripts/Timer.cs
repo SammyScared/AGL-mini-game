@@ -23,6 +23,9 @@ public class Timer : MonoBehaviour
     [Header("Limit Settings")]
     public bool hasLimit;
     public float timerLimit;
+
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform respawnPoint;
     
 
     // Start is called before the first frame update
@@ -41,8 +44,16 @@ public class Timer : MonoBehaviour
             currentTime = timerLimit;
             SetTimerText();
             timerText.color = Color.red;
-            Application.Quit();
-            Debug.Log("Application Quitted");
+            
+            if (currentTime <= 0)
+            {
+                player.transform.position = respawnPoint.transform.position;
+                Physics.SyncTransforms();
+                Debug.Log("Player Respawned");
+            }
+            
+            //Application.Quit();
+            //Debug.Log("Application Quitted");
             enabled = false;
         }
 
