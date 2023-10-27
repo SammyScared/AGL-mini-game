@@ -2,6 +2,7 @@
 
     This script adds a timer to the game. 
     When the timer ends, the game restarts.
+    Added comment
 
 */
 
