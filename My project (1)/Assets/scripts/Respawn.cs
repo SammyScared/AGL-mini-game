@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Respawn : MonoBehaviour
 {
@@ -11,8 +12,7 @@ public class Respawn : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            player.transform.position = respawnPoint.transform.position;
-            Physics.SyncTransforms();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
     

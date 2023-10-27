@@ -10,6 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -22,11 +23,7 @@ public class Timer : MonoBehaviour
 
     [Header("Limit Settings")]
     public bool hasLimit;
-    public float timerLimit;
-
-    [SerializeField] private Transform player;
-    [SerializeField] private Transform respawnPoint;
-    
+    public float timerLimit;    
 
     // Start is called before the first frame update
     void Start()
@@ -47,9 +44,7 @@ public class Timer : MonoBehaviour
             
             if (currentTime <= 0)
             {
-                player.transform.position = respawnPoint.transform.position;
-                Physics.SyncTransforms();
-                Debug.Log("Player Respawned");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
             
             //Application.Quit();
